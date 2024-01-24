@@ -40,3 +40,6 @@ class UserRegistrationForm(forms.Form):
     full_name = forms.CharField(max_length=55, widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
+
+class VerifyCodeForm(forms.Form):
+    code = forms.IntegerField(widget=forms.NumberInput(attrs={'class':'form-control'}))
