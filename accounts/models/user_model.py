@@ -1,4 +1,5 @@
 from django.db import models
+from ..managers import UserManager
 
 
 class User(models.Model):
@@ -7,6 +8,9 @@ class User(models.Model):
     full_name = models.CharField(max_length=55)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+
+    # add UserManager Objects
+    objects = UserManager
 
     # this field should be unique = True
     USERNAME_FIELD = 'phone_number'  # when run: python manage.py createsuperuser this field authentication user.
