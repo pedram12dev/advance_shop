@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from .models import User
 from django.contrib import messages
 from .forms import UserRegistrationForm
 
@@ -13,4 +14,10 @@ class UserRegisterView(View):
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-        pass
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            User.objects.create_user(cd['phone_number'],cd['email'],cd['full_name'],cd['password'])
+            messages.success(request , 'you registered successfully' , 'success')
+            return redirect('home:home')
+        return render(request , self.template_name , {'form':form})
