@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+<title>{% block title %}Login {% endblock %}</title>
+
+{% block content %}
+    <div class="d-inline justify-content-center">
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login" class="btn btn-outline-primary">
+        </form>
+    </div>
+{% endblock %}
