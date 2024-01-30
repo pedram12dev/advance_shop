@@ -14,8 +14,12 @@ class Category(models.Model):
         return self.name
 
 
+    def get_absolute_url(self):
+        return reverse('products:category' , args=[self.slug , ])
+
+
 class Product(models.Model):
-    Category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='c_products')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='c_products')
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=50, unique=True)
     image = models.ImageField()
