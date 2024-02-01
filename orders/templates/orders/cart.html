@@ -36,7 +36,7 @@
                     <td class="text-right font-weight-semibold align-middle p-4">{{ item.price }}</td>
                     <td class="align-middle p-4 text-center">{{ item.quantity }}</td>
                     <td class="text-right font-weight-semibold align-middle p-4">{{ item.total_price }}</td>
-                    <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                    <td class="text-center align-middle px-0"><a href="{% url 'orders:cart_remove' item.product.id %}" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
                   </tr>
                 {% endfor %}
                 </tbody>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="text-center mt-4">
                   <label class="text-muted font-weight-normal m-1"> Total price: </label>
-                  <div class="text-large"><strong>57.55</strong></div>
+                  <div class="text-large"><strong>{{ cart.get_total_price }}</strong></div>
                 </div>
               </div>
             </div>
