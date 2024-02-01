@@ -16,7 +16,10 @@ class Order(models.Model):
         return f'{self.user} - {str(self.id)}'
 
     def get_total_price(self):
-        return sum(item.get_cost() for item in self.items.all())
+        return sum(
+            item.get_cost()
+            for item in self.items.all()
+        )
 
 
 class OrderItem(models.Model):
