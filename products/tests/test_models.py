@@ -5,7 +5,7 @@ from django.urls import reverse
 
 class TestProductsModel(TestCase):
     def setUp(self):
-        Category.objects.create(name='winter wear', slug='winter-wear')
+        Category.objects.create(id=1 ,name='winter wear', slug='winter-wear')
         Product.objects.create(name='winter wear', slug='winter-wear', price=400, category_id=1)
 
     def test_product_get_absolute_url(self):
